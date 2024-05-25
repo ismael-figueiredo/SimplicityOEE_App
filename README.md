@@ -1,0 +1,1 @@
+=> Criar o banco de dados e um usuário e setor padrão "python src/database/create_database.py"
