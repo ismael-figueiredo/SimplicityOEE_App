@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 from flask_login import LoginManager, current_user
 
 from app import *
-from src.pages import home, login
+from src.pages import adm, home, login
 
 login_manager = LoginManager()
 login_manager.init_app(server)
@@ -40,6 +40,7 @@ app.layout = html.Div(
     ],
     style={
         "height": "100vh",
+        "padding": "10px",
     },
 )
 
@@ -71,13 +72,13 @@ def render_page_content(login_state):
 )
 def render_page_content(pathname, login_state):
     if pathname == "/login":
-        return login.render_layout(login_state)
+        return login.render_layout()
 
-    if pathname == "/home" or pathname == "/":
-        if not current_user.is_authenticated:
-            return home.render_layout("Nome do usuário aqui")
-        else:
-            return login.render_layout(login_state)
+    if pathname == "/home":
+        return home.render_layout()
+
+    if pathname == "/adm":
+        return adm.render_layout()
 
 
 if __name__ == "__main__":

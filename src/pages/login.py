@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from dash import html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from flask_login import login_manager, login_user
+from flask_login import  login_user
 
 from app import *
 
@@ -18,7 +18,7 @@ card_style = {
 Adm = [{"label": "Administrador", "value": "Administrador"}]
 
 
-def render_layout(login_state):
+def render_layout():
 
     login = dbc.Card(
         [
@@ -44,7 +44,7 @@ def render_layout(login_state):
             html.Span(id="error_login", style={"text-align": "center"}),
             html.Br(),
             html.Span(
-                "MES Appp V 1.0 ©CreatedBy IsmaelFigueiredo",
+                "Simplicity MES App V 1.0 ©CreatedBy IsmaelFigueiredo",
                 style={
                     "text-align": "center",
                     "font-size": "10px",

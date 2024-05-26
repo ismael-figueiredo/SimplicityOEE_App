@@ -1,20 +1,12 @@
-import sqlite3
-import time
-from datetime import datetime
-
 import dash_bootstrap_components as dbc
-import pandas as pd
 from dash import dcc, html
-from dash.dependencies import Input, Output, State
-from dash.exceptions import PreventUpdate
-from flask_login import current_user, logout_user
 
 from app import *
 
 dash.register_page(__name__)
 
 
-def render_layout(username):
+def render_layout():
     template = dbc.Container(
         children=[
             dbc.Row(

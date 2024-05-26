@@ -1,10 +1,12 @@
 import os
 import sqlite3
+
 import dash
 import dash_bootstrap_components as dbc
-from flask_login import  UserMixin, current_user
+from flask_login import UserMixin, current_user
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import  create_engine
+from sqlalchemy import create_engine
+
 from app import *
 from models import Sector, Users
 
@@ -26,7 +28,7 @@ app = dash.Dash(
 )
 server = app.server
 app.config.suppress_callback_exceptions = True
-app.title = "MES Tork tomadas de força"
+app.title = "Simplicity MES App"
 
 server.config.update(
     SECRET_KEY=os.urandom(12),
