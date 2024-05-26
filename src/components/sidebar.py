@@ -31,4 +31,5 @@ layout = dbc.Card(
             style={"margin-bottom": "50px"},
         ),
     ],
+    style={"width": "100%", "margin-top": "8px"},
 )

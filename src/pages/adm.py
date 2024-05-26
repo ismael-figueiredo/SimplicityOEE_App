@@ -1,9 +1,9 @@
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import dcc, html
 from dash.dependencies import Input, Output
 
 from app import *
-from src.components import sidebar
+from src.components import dashboard, sidebar
 
 
 def render_layout():
@@ -12,12 +12,14 @@ def render_layout():
             dbc.Row(
                 [
                     dbc.Col([sidebar.layout], md=2),
-                    dbc.Col([html.Div(id="page-content")], md=10),
+                    dbc.Col(
+                        [dashboard.layout],
+                        md=10,
+                    ),
                 ]
             ),
         ],
         fluid=True,
-        style={"padding": "0px"},
         className="dbc",
     )
 

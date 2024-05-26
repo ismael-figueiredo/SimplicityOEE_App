@@ -28,7 +28,7 @@ app.layout = html.Div(
                             id="page-content",
                             children=[html.H1("Simple OEE Aplication")],
                             style={
-                                "height": "100vh",
+                                "height": "100%",
                                 "display": "flex",
                                 "justify-content": "center",
                             },
@@ -40,7 +40,6 @@ app.layout = html.Div(
     ],
     style={
         "height": "100vh",
-        "padding": "10px",
     },
 )
 
