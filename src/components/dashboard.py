@@ -615,3 +615,4 @@ layout = html.Div(
         fluid=True,
     )
 )
+

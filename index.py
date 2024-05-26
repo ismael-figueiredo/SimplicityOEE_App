@@ -79,6 +79,9 @@ def render_page_content(pathname, login_state):
     if pathname == "/adm":
         return adm.render_layout()
 
+    if pathname == "/dashboard":
+        return adm.render_layout()
+
 
 if __name__ == "__main__":
     app.run_server(host="0.0.0.0", port=8052, debug=True)

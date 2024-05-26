@@ -13,7 +13,7 @@ def render_layout():
                 [
                     dbc.Col([sidebar.layout], md=2),
                     dbc.Col(
-                        [dashboard.layout],
+                        [html.Div(id="adm-content", children=[])],
                         md=10,
                     ),
                 ]
@@ -24,3 +24,11 @@ def render_layout():
     )
 
     return layout
+
+
+@app.callback(Output("adm-content", "children"), [Input("base-url", "pathname")])
+def render_adm_content(pathname):
+    if pathname == "/adm":
+        return dashboard.layout
+    if pathname == "/dashboard":
+        return dashboard.layout
