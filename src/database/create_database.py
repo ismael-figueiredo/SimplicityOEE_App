@@ -1,15 +1,17 @@
+import hashlib
 import sqlite3
 from sqlite3 import Error
-import hashlib
+
 
 def create_connection():
     conn = None
     try:
-        conn = sqlite3.connect('src/database/database.db')
+        conn = sqlite3.connect("src/database/database.db")
         print(sqlite3.version)
     except Error as e:
         print(e)
     return conn
+
 
 def create_table(conn, create_table_sql):
     try:
@@ -18,21 +20,25 @@ def create_table(conn, create_table_sql):
     except Error as e:
         print(e)
 
+
 def insert_admin_and_sector(conn):
     """Insere um setor inicial (Adm) e um usuário (Admin) no banco de dados."""
     try:
         sql_insert_sector = """INSERT INTO sectors (name) VALUES ('Adm');"""
         c = conn.cursor()
         c.execute(sql_insert_sector)
-        sector_id = c.lastrowid  
+        sector_id = c.lastrowid
         password = "123"
-        encrypted_password = hashlib.sha256(password.encode()).hexdigest()  
+        encrypted_password = hashlib.sha256(password.encode()).hexdigest()
         sql_insert_user = """INSERT INTO users (name, role, sector_id, password) VALUES (?, ?, ?, ?);"""
-        c.execute(sql_insert_user, ("Admin", "Administrator", sector_id, encrypted_password))
-        
+        c.execute(
+            sql_insert_user, ("Admin", "Administrator", sector_id, encrypted_password)
+        )
+
         conn.commit()
     except Error as e:
         print(e)
+
 
 def main():
     conn = create_connection()
@@ -134,11 +140,12 @@ def main():
         create_table(conn, sql_create_reason_for_stopping_table)
         create_table(conn, sql_create_reason_for_discard_table)
         create_table(conn, sql_create_unconformities_table)
-        #insere o usuário padrão
+        # insere o usuário padrão
         insert_admin_and_sector(conn)
         conn.close()
         print("Banco de dados criado com sucesso!")
     else:
         print("Erro ao conectar ao banco de dados.")
+
 
 main()

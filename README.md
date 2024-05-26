@@ -28,9 +28,9 @@ Este comando irá configurar o banco de dados necessário para a aplicação e a
 Para iniciar a aplicação, navegue até o diretório do projeto e execute o seguinte comando:
 
 ```bash
-python src/app.py
+python index.py
 ```
-Este comando iniciará o servidor local, e você poderá acessar a interface da aplicação através de um navegador web no endereço indicado no terminal, geralmente http://localhost:8050.
+Este comando iniciará o servidor local, e você poderá acessar a interface da aplicação através de um navegador web no endereço indicado no terminal, geralmente http://localhost:8052.
 
 ## Contribuições
 Contribuições são sempre bem-vindas! Se você tem sugestões para melhorar esta aplicação, sinta-se à vontade para criar um fork do projeto e enviar um pull request, ou abrir uma issue no GitHub.
