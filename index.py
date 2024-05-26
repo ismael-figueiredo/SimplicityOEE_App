@@ -74,8 +74,8 @@ def render_page_content(pathname, login_state):
         return login.render_layout(login_state)
 
     if pathname == "/home" or pathname == "/":
-        if current_user.is_authenticated:
-            return home.render_layout(login_state)
+        if not current_user.is_authenticated:
+            return home.render_layout("Nome do usuário aqui")
         else:
             return login.render_layout(login_state)
 
