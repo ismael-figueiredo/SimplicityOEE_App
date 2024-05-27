@@ -1,10 +1,14 @@
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 from dash.dependencies import Input, Output
+from flask_login import logout_user
+from dash.exceptions import PreventUpdate
+
 from app import *
 
 layout = dbc.Card(
     [
+        html.Div(id="div-ghost"),
         html.Img(
             src="/assets/logo.png",
             className="align-self-center",
@@ -26,6 +30,7 @@ layout = dbc.Card(
                 dbc.NavLink("Máquinas", href="#", active="exact"),
                 dbc.NavLink("Setores", href="#", active="exact"),
                 dbc.NavLink("Tempos", href="#", active="exact"),
+                dbc.NavLink("sair", id="logout", href="/login", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -37,4 +42,9 @@ layout = dbc.Card(
 )
 
 
-
+@app.callback(Output("div-ghost", "children"), [Input("logout", "n_clicks")])
+def logout(n_clicks):
+    if n_clicks is None:
+        raise PreventUpdate
+    logout_user()
+    return ""

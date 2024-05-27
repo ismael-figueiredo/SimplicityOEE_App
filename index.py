@@ -28,9 +28,10 @@ app.layout = html.Div(
                             id="page-content",
                             children=[html.H1("Simple OEE Aplication")],
                             style={
-                                "height": "100%",
                                 "display": "flex",
+                                "min-height": "100vh",
                                 "justify-content": "center",
+                                "align-items": "center",
                             },
                         )
                     ]
@@ -73,14 +74,19 @@ def render_page_content(pathname, login_state):
     if pathname == "/login":
         return login.render_layout()
 
-    if pathname == "/home":
-        return home.render_layout()
+    if pathname == "/":
+        if current_user.is_authenticated and current_user.role == "Administrator":
+            return adm.render_layout()
+        elif current_user.is_authenticated and current_user.role != "Administrator":
+            return home.render_layout()
+        else:
+            return login.render_layout()
 
-    if pathname == "/adm":
-        return adm.render_layout()
-
-    if pathname == "/dashboard":
-        return adm.render_layout()
+    if pathname == "/dashboard" or pathname == "/adm":
+        if current_user.is_authenticated:
+            return adm.render_layout()
+        else:
+            return login.render_layout()
 
 
 if __name__ == "__main__":

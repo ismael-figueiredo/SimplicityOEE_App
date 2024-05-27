@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from dash import html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from flask_login import  login_user
+from flask_login import login_user
 
 from app import *
 
@@ -14,8 +14,8 @@ card_style = {
     "padding-top": "25px",
     "padding-right": "25px",
     "padding-left": "25px",
+    "margin": "auto",
 }
-Adm = [{"label": "Administrador", "value": "Administrador"}]
 
 
 def render_layout():
@@ -54,7 +54,6 @@ def render_layout():
             ),
         ],
         style=card_style,
-        className="align-self-center",
     )
     return login
 

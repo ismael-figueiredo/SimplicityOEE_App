@@ -28,6 +28,8 @@ def render_layout():
 
 @app.callback(Output("adm-content", "children"), [Input("base-url", "pathname")])
 def render_adm_content(pathname):
+    if pathname == "/":
+        return dashboard.layout
     if pathname == "/adm":
         return dashboard.layout
     if pathname == "/dashboard":
