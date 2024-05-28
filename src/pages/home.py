@@ -1,9 +1,10 @@
 import dash_bootstrap_components as dbc
 from dash import dcc, html
+from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
+from flask_login import current_user, logout_user
 
 from app import *
-
-dash.register_page(__name__)
 
 
 def render_layout():
@@ -20,7 +21,7 @@ def render_layout():
                                             html.Legend(
                                                 [
                                                     html.Strong(f"Usuário: "),
-                                                    html.Span("ismael"),
+                                                    html.Span(current_user.name),
                                                     html.Strong("Máquina: "),
                                                     html.Span("Torno 1"),
                                                 ],
@@ -31,7 +32,11 @@ def render_layout():
                                             ),
                                             html.Legend(
                                                 [
-                                                    dcc.Link("Sair", href="#"),
+                                                    dbc.Button(
+                                                        "Sair",
+                                                        id="logout-home",
+                                                        color="danger",
+                                                    ),
                                                 ],
                                                 style={
                                                     "justify-content": "end",
@@ -143,3 +148,17 @@ def render_layout():
         ]
     )
     return template
+
+
+@app.callback(
+    Output("base-url", "pathname", allow_duplicate=True),
+    [Input("logout-home", "n_clicks")],
+    prevent_initial_call="initial_duplicate",  # Permitindo chamadas iniciais com duplicidade
+)
+def logout_homepage(n_clicks):
+    if n_clicks is None:
+        raise PreventUpdate
+
+    if current_user.is_authenticated:
+        logout_user()
+    return "/login"

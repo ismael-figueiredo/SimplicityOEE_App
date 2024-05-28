@@ -75,27 +75,27 @@ def render_page_content(pathname, login_state):
         return login.render_layout()
 
     if pathname == "/":
-        if current_user.is_authenticated and current_user.role == "Administrator":
+        if current_user.is_authenticated and current_user.role == "admin":
             return adm.render_layout()
-        elif current_user.is_authenticated and current_user.role != "Administrator":
+        elif current_user.is_authenticated and current_user.role != "admin":
             return home.render_layout()
         else:
             return login.render_layout()
 
     if pathname == "/dashboard" or pathname == "/adm":
-        if current_user.is_authenticated and current_user.role == "Administrator":
+        if current_user.is_authenticated and current_user.role == "admin":
             return adm.render_layout()
         else:
             return login.render_layout()
 
     if pathname == "/timeline":
-        if current_user.is_authenticated and current_user.role == "Administrator":
+        if current_user.is_authenticated and current_user.role == "admin":
             return adm.render_layout()
         else:
             return login.render_layout()
 
     if pathname == "/production":
-        if current_user.is_authenticated and current_user.role != "Administrator":
+        if current_user.is_authenticated and current_user.role != "admin":
             return production.render_layout()
         else:
             return login.render_layout()
