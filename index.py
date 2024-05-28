@@ -2,7 +2,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
-from flask_login import LoginManager, current_user
+from flask_login import LoginManager
 
 from app import *
 from src.pages import adm, home, login, production
@@ -10,6 +10,13 @@ from src.pages import adm, home, login, production
 login_manager = LoginManager()
 login_manager.init_app(server)
 login_manager.login_view = "/login"
+
+# para desenvolvimento, evita logins desnecessários
+from types import SimpleNamespace
+
+current_user = SimpleNamespace(
+    is_authenticated=True, role="admin", sector="Administração", name="Usuário Admin"
+)
 
 
 # =========  Layout  =========== #
