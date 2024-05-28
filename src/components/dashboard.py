@@ -12,7 +12,7 @@ layout = html.Div(
                                 [
                                     dbc.CardBody(
                                         [
-                                            html.H1(["Dashboard "]),
+                                            html.H1(["Dashboard de produção"]),
                                             dbc.Row(
                                                 [
                                                     dbc.Col(

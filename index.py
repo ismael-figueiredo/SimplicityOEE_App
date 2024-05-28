@@ -83,7 +83,13 @@ def render_page_content(pathname, login_state):
             return login.render_layout()
 
     if pathname == "/dashboard" or pathname == "/adm":
-        if current_user.is_authenticated:
+        if current_user.is_authenticated and current_user.role == "Administrator":
+            return adm.render_layout()
+        else:
+            return login.render_layout()
+
+    if pathname == "/timeline":
+        if current_user.is_authenticated and current_user.role == "Administrator":
             return adm.render_layout()
         else:
             return login.render_layout()

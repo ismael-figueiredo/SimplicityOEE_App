@@ -3,7 +3,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 
 from app import *
-from src.components import dashboard, sidebar
+from src.components import dashboard, sidebar, timeline
 
 
 def render_layout():
@@ -34,3 +34,5 @@ def render_adm_content(pathname):
         return dashboard.layout
     if pathname == "/dashboard":
         return dashboard.layout
+    if pathname == "/timeline":
+        return timeline.layout
