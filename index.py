@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 from flask_login import LoginManager, current_user
 
 from app import *
-from src.pages import adm, home, login
+from src.pages import adm, home, login, production
 
 login_manager = LoginManager()
 login_manager.init_app(server)
@@ -91,6 +91,12 @@ def render_page_content(pathname, login_state):
     if pathname == "/timeline":
         if current_user.is_authenticated and current_user.role == "Administrator":
             return adm.render_layout()
+        else:
+            return login.render_layout()
+
+    if pathname == "/production":
+        if current_user.is_authenticated and current_user.role != "Administrator":
+            return production.render_layout()
         else:
             return login.render_layout()
 
