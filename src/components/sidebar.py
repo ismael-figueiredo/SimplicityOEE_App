@@ -26,7 +26,7 @@ layout = dbc.Card(
             [
                 dbc.NavLink("Dashboard", href="/dashboard", active="exact"),
                 dbc.NavLink("Time-line", href="/timeline", active="exact"),
-                dbc.NavLink("Usuários", href="#", active="exact"),
+                dbc.NavLink("Usuários",id="open-modal-new-user", href="#", active="exact"),
                 dbc.NavLink("Máquinas", href="#", active="exact"),
                 dbc.NavLink("Setores", href="#", active="exact"),
                 dbc.NavLink("Tempos", href="#", active="exact"),
