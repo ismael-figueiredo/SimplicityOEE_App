@@ -3,13 +3,14 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 
 from app import *
-from src.components import dashboard, modalNewUser, sidebar, timeline
+from src.components import dashboard, modalMachine, modalUser, sidebar, timeline
 
 
 def render_layout():
     layout = dbc.Container(
         children=[
-            modalNewUser.layout,
+            modalUser.layout,
+            modalMachine.layout,
             dbc.Row(
                 [
                     dbc.Col([sidebar.layout], md=2),

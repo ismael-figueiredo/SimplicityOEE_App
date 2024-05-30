@@ -109,4 +109,4 @@ def render_page_content(pathname, login_state):
 
 
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=8052, debug=True)
+    app.run_server(host="0.0.0.0", port=8052, debug=True, use_reloader=True)

@@ -14,7 +14,7 @@ layout = dbc.Modal(
                         [
                             dbc.Label(html.Strong("Setor:")),
                             dbc.Select(
-                                id="new-user-modal-sector-select",
+                                id="modal-user-sector-select",
                                 options=[],
                                 placeholder="Selecione um setor",
                             ),
@@ -27,7 +27,7 @@ layout = dbc.Modal(
                         [
                             dbc.Label(html.Strong("Acesso:")),
                             dbc.Select(
-                                id="new-user-modal-role-select",
+                                id="modal-user-role-select",
                                 options=[
                                     {"label": "Administrador", "value": "admin"},
                                     {"label": "Operador", "value": "operator"},
@@ -43,7 +43,7 @@ layout = dbc.Modal(
                         [
                             dbc.Label(html.Strong("Nome:")),
                             dbc.Input(
-                                id="new-user-modal-name-input",
+                                id="modal-user-name-input",
                                 type="text",
                                 placeholder="Digite o nome",
                             ),
@@ -54,7 +54,7 @@ layout = dbc.Modal(
                 dbc.Row(
                     dbc.Col(
                         html.P(
-                            id="new-user-modal-error-message",
+                            id="modal-user-error-message",
                             style={"display": "none", "color": "red"},
                         ),
                         width=12,
@@ -66,9 +66,8 @@ layout = dbc.Modal(
                             html.Br(),
                             dbc.Button(
                                 "Adicionar",
-                                href="/refresh",
                                 color="success",
-                                id="new-user-modal-add-btn",
+                                id="modal-user-add-btn",
                                 style={"margin-bottom": "20px"},
                             ),
                         ],
@@ -90,7 +89,7 @@ layout = dbc.Modal(
                                         [
                                             dbc.Label(html.Strong("Setor:")),
                                             dbc.Select(
-                                                id="new-user-modal-delete-sector-select",
+                                                id="modal-user-delete-sector-select",
                                                 options=[],
                                                 placeholder="Selecione um setor",
                                             ),
@@ -101,7 +100,7 @@ layout = dbc.Modal(
                                         [
                                             dbc.Label(html.Strong("Funcionário:")),
                                             dbc.Select(
-                                                id="new-user-modal-delete-user-select",
+                                                id="modal-user-delete-user-select",
                                                 options=[],
                                                 placeholder="Selecione um funcionário",
                                             ),
@@ -114,30 +113,30 @@ layout = dbc.Modal(
                             dbc.Button(
                                 "Deletar",
                                 color="warning",
-                                id="new-user-modal-delete-btn",
+                                id="modal-user-delete-btn",
                             ),
                         ],
                         title="Deseja deletar um funcionário?",
                     ),
                     start_collapsed=True,
-                    id="new-user-modal-delete-accordion",
+                    id="modal-user-delete-accordion",
                 ),
             ]
         ),
     ],
-    id="new-user-modal",
+    id="modal-user",
     backdrop="static",
     scrollable=True,
 )
 
 
 @app.callback(
-    Output("new-user-modal", "is_open"),
+    Output("modal-user", "is_open"),
     [
-        Input("open-new-user-modal-btn", "n_clicks"),
-        Input("new-user-modal-delete-btn", "n_clicks"),
+        Input("open-modal-user", "n_clicks"),
+        Input("modal-user-delete-btn", "n_clicks"),
     ],
-    [State("new-user-modal", "is_open")],
+    [State("modal-user", "is_open")],
 )
 def toggle_new_user_modal(open_clicks, close_clicks, is_open):
     if open_clicks or close_clicks:
