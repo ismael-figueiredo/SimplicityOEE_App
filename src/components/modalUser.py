@@ -138,7 +138,7 @@ layout = dbc.Modal(
     ],
     [State("modal-user", "is_open")],
 )
-def toggle_new_user_modal(open_clicks, close_clicks, is_open):
+def toggle_user_modal(open_clicks, close_clicks, is_open):
     if open_clicks or close_clicks:
         return not is_open
     return is_open

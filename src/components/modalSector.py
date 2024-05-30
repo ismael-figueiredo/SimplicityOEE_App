@@ -1,15 +1,15 @@
 import sqlite3
-import time
 
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
 
-from app import *
+from app import app
+
 
 layout = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar/Excluir máquina")])),
+        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar/Excluir setor")])),
         dbc.ModalBody(
             [
                 dbc.Row(
@@ -17,25 +17,10 @@ layout = dbc.Modal(
                         dbc.Col(
                             [
                                 dbc.Label([html.Strong("Setor:")]),
-                                dbc.Select(
-                                    id="modal-machine-sector-select",
-                                    options=[],
-                                    placeholder="Selecione um setor",
-                                ),
-                            ],
-                            width=8,
-                        ),
-                    ]
-                ),
-                dbc.Row(
-                    [
-                        dbc.Col(
-                            [
-                                dbc.Label([html.Strong("Máquina:")]),
                                 dbc.Input(
-                                    id="modal-machine-name-input",
+                                    id="modal-sector-input-name",
                                     type="text",
-                                    placeholder="Digite o nome da máquina",
+                                    placeholder="Digite o setor",
                                 ),
                             ],
                             width=8,
@@ -47,7 +32,7 @@ layout = dbc.Modal(
                         dbc.Col(
                             [
                                 html.P(
-                                    id="modal-machine-error-msg",
+                                    id="modal-sector-error-message",
                                     style={"display": "none", "color": "red"},
                                 ),
                             ],
@@ -85,11 +70,11 @@ layout = dbc.Modal(
                                     [
                                         dbc.Col(
                                             [
-                                                dbc.Label([html.Strong("Máquina:")]),
+                                                dbc.Label([html.Strong("Setor:")]),
                                                 dbc.Select(
-                                                    id="modal-machine-select-delete",
+                                                    id="modal-sector-select-delete",
                                                     options=[],
-                                                    placeholder="Selecione uma máquina para deletar",
+                                                    placeholder="Selecione um setor",
                                                 ),
                                             ],
                                             width=8,
@@ -100,33 +85,30 @@ layout = dbc.Modal(
                                 dbc.Button(
                                     "Deletar",
                                     color="warning",
-                                    id="modal-machine-delete-button",
+                                    id="modal-sector-delete-button",
                                 ),
                             ],
-                            title="Deseja deletar uma máquina?",
+                            title="Deseja deletar um setor?",
                         ),
                     ],
                     start_collapsed=True,
-                    id="modal-machine-delete-accordion",
+                    id="modal-sector-delete-accordion",
                 ),
             ]
         ),
     ],
-    id="modal-machine",
+    id="modal-sector",
     backdrop="static",
     scrollable=True,
 )
 
 
 @app.callback(
-    Output("modal-machine", "is_open"),
-    [
-        Input("open-modal-machine", "n_clicks"),
-        Input("modal-machine-delete-button", "n_clicks"),
-    ],
-    [State("modal-machine", "is_open")],
+    Output("modal-sector", "is_open"),
+    [Input("open-modal-sector", "n_clicks")],
+    [State("modal-sector", "is_open")],
 )
-def toggle_machine_modal(open_clicks, close_clicks, is_open):
-    if open_clicks or close_clicks:
+def toggle_sector_modal(n_clicks, is_open):
+    if n_clicks:
         return not is_open
     return is_open
