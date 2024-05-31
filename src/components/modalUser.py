@@ -134,7 +134,7 @@ layout = dbc.Modal(
     Output("modal-user", "is_open"),
     [
         Input("open-modal-user", "n_clicks"),
-        Input("modal-user-delete-btn", "n_clicks"),
+        Input("modal-user-add-btn", "n_clicks"),
     ],
     [State("modal-user", "is_open")],
 )

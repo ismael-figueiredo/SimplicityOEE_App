@@ -6,7 +6,6 @@ from dash.dependencies import Input, Output, State
 
 from app import app
 
-
 layout = dbc.Modal(
     [
         dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar/Excluir setor")])),
@@ -48,7 +47,7 @@ layout = dbc.Modal(
                                 dbc.Button(
                                     "Adicionar",
                                     class_name="btn btn-success btn-lg",
-                                    id="modal-machine-add-button",
+                                    id="modal-sector-add-button",
                                     style={"margin-bottom": "20px"},
                                 ),
                             ],
@@ -105,10 +104,13 @@ layout = dbc.Modal(
 
 @app.callback(
     Output("modal-sector", "is_open"),
-    [Input("open-modal-sector", "n_clicks")],
+    [
+        Input("open-modal-sector", "n_clicks"),
+        Input("modal-sector-add-button", "n_clicks"),
+    ],
     [State("modal-sector", "is_open")],
 )
-def toggle_sector_modal(n_clicks, is_open):
-    if n_clicks:
+def toggle_sector_modal(open_clicks, close_clicks, is_open):
+    if open_clicks or close_clicks:
         return not is_open
     return is_open
