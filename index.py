@@ -11,14 +11,6 @@ login_manager = LoginManager()
 login_manager.init_app(server)
 login_manager.login_view = "/login"
 
-# para desenvolvimento, evita logins desnecessários
-from types import SimpleNamespace
-
-current_user = SimpleNamespace(
-    is_authenticated=True, role="admin", sector="Administração", name="Usuário Admin"
-)
-
-
 # =========  Layout  =========== #
 app.layout = html.Div(
     children=[

@@ -4,6 +4,12 @@
 
 Este projeto visa fornecer uma solução simples e gratuita para pequenas empresas monitorarem sua produção. A aplicação OEE (Overall Equipment Effectiveness) é voltada para empresas que não têm condições de adquirir softwares MES (Manufacturing Execution System) caros e querem iniciar a gestão e o monitoramento de suas operações de forma eficaz. O projeto é open-source, sob a licença MIT, construído com Python, SQLite, Dash, Dash Bootstrap Components, entre outras tecnologias.
 
+<p  align="center">
+
+<img  alt="SimplicityOee"  src=".github/preview.jpg"  width="100%">
+
+</p>
+
 ## Configuração
 
 ### Pré-requisitos

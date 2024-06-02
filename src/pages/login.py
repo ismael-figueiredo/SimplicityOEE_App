@@ -61,7 +61,7 @@ def render_layout():
 # =========  Callbacks Page1  =========== #
 @app.callback(
     Output("login-state", "data"),
-    Output("error_login", "children"),  # Atualiza este campo com a mensagem de erro
+    Output("error_login", "children"),  
     Input("login_button", "n_clicks"),
     [State("user_login", "value"), State("pwd_login", "value")],
 )
@@ -75,7 +75,7 @@ def successful(n_clicks, username, password):
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         if hashed_password == user.password:
             login_user(user)
-            return "success", "success"  # Sem mensagem de erro em caso de sucesso
+            return "success", "success"  
         else:
             return "error", "Usuário ou senha incorretos."
     else:

@@ -63,6 +63,7 @@ def render_layout():
                                                 style={
                                                     "width": "180px",
                                                     "height": "180px",
+                                                    "margin-bottom": "1rem",
                                                 },
                                             ),
                                         ],
@@ -153,7 +154,7 @@ def render_layout():
 @app.callback(
     Output("base-url", "pathname", allow_duplicate=True),
     [Input("logout-home", "n_clicks")],
-    prevent_initial_call="initial_duplicate",  # Permitindo chamadas iniciais com duplicidade
+    prevent_initial_call="initial_duplicate",  
 )
 def logout_homepage(n_clicks):
     if n_clicks is None:

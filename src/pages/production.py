@@ -36,7 +36,6 @@ def render_layout():
                                         "justify-content": "space-between",
                                     },
                                 ),
-                                # main
                                 dbc.Row(
                                     [
                                         dbc.Col(
@@ -72,7 +71,6 @@ def render_layout():
                                                 ),
                                                 dbc.Row(html.Br()),
                                                 html.Div(id="table", children=[]),
-                                                # Cronometro
                                                 dbc.Row(
                                                     [
                                                         html.Div(
@@ -95,7 +93,6 @@ def render_layout():
                                                 dbc.Row(html.Br()),
                                                 dbc.Row(
                                                     [
-                                                        # Botão modal não conformidade
                                                         dbc.Button(
                                                             color="warning",
                                                             id="open-nao-conformidade",
@@ -116,7 +113,6 @@ def render_layout():
                                                         html.Br(),
                                                     ]
                                                 ),
-                                                # Botão encerrar produção
                                                 dbc.Row(
                                                     [
                                                         dbc.Button(
@@ -154,7 +150,6 @@ def render_layout():
                         )
                     ]
                 ),
-                # header
             ],
             id="producao-content",
             style={
