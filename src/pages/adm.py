@@ -6,6 +6,8 @@ from app import *
 from src.components import (
     dashboard,
     modalMachine,
+    modalReasonStop,
+    modalReasonunconform,
     modalSector,
     modalTime,
     modalUser,
@@ -21,6 +23,8 @@ def render_layout():
             modalMachine.layout,
             modalSector.layout,
             modalTime.layout,
+            modalReasonStop.layout,
+            modalReasonunconform.layout,
             dbc.Row(
                 [
                     dbc.Col([sidebar.layout], md=2),
