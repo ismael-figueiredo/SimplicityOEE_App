@@ -8,7 +8,7 @@ from app import app
 
 layout = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar/Excluir setor")])),
+        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar novo setor")])),
         dbc.ModalBody(
             [
                 dbc.Row(
@@ -54,44 +54,6 @@ layout = dbc.Modal(
                             width=4,
                         ),
                     ]
-                ),
-                dbc.Accordion(
-                    [
-                        dbc.AccordionItem(
-                            [
-                                dbc.Alert(
-                                    "Deletar pode afetar o funcionamento da aplicação!",
-                                    dismissable=True,
-                                    is_open=True,
-                                    color="danger",
-                                ),
-                                dbc.Row(
-                                    [
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Setor:")]),
-                                                dbc.Select(
-                                                    id="modal-sector-select-delete",
-                                                    options=[],
-                                                    placeholder="Selecione um setor",
-                                                ),
-                                            ],
-                                            width=8,
-                                        ),
-                                    ]
-                                ),
-                                html.Br(),
-                                dbc.Button(
-                                    "Deletar",
-                                    color="warning",
-                                    id="modal-sector-delete-button",
-                                ),
-                            ],
-                            title="Deseja deletar um setor?",
-                        ),
-                    ],
-                    start_collapsed=True,
-                    id="modal-sector-delete-accordion",
                 ),
             ]
         ),

@@ -6,7 +6,7 @@ from app import app
 
 layout = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.ModalTitle(html.Strong("Cadastrar/Excluir Usuário"))),
+        dbc.ModalHeader(dbc.ModalTitle(html.Strong("Cadastrar novo Usuário"))),
         dbc.ModalBody(
             [
                 dbc.Row(
@@ -73,53 +73,6 @@ layout = dbc.Modal(
                         ],
                         width=4,
                     )
-                ),
-                dbc.Accordion(
-                    dbc.AccordionItem(
-                        [
-                            dbc.Alert(
-                                "Deletar pode afetar o funcionamento da aplicação!",
-                                color="danger",
-                                dismissable=True,
-                                is_open=True,
-                            ),
-                            dbc.Row(
-                                [
-                                    dbc.Col(
-                                        [
-                                            dbc.Label(html.Strong("Setor:")),
-                                            dbc.Select(
-                                                id="modal-user-delete-sector-select",
-                                                options=[],
-                                                placeholder="Selecione um setor",
-                                            ),
-                                        ],
-                                        width=6,
-                                    ),
-                                    dbc.Col(
-                                        [
-                                            dbc.Label(html.Strong("Funcionário:")),
-                                            dbc.Select(
-                                                id="modal-user-delete-user-select",
-                                                options=[],
-                                                placeholder="Selecione um funcionário",
-                                            ),
-                                        ],
-                                        width=6,
-                                    ),
-                                ]
-                            ),
-                            html.Br(),
-                            dbc.Button(
-                                "Deletar",
-                                color="warning",
-                                id="modal-user-delete-btn",
-                            ),
-                        ],
-                        title="Deseja deletar um funcionário?",
-                    ),
-                    start_collapsed=True,
-                    id="modal-user-delete-accordion",
                 ),
             ]
         ),

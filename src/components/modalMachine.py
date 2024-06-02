@@ -9,7 +9,7 @@ from app import *
 
 layout = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar/Excluir máquina")])),
+        dbc.ModalHeader(dbc.ModalTitle([html.Strong("Cadastrar nova máquina")])),
         dbc.ModalBody(
             [
                 dbc.Row(
@@ -70,44 +70,6 @@ layout = dbc.Modal(
                             width=4,
                         ),
                     ]
-                ),
-                dbc.Accordion(
-                    [
-                        dbc.AccordionItem(
-                            [
-                                dbc.Alert(
-                                    "Deletar pode afetar o funcionamento da aplicação!",
-                                    dismissable=True,
-                                    is_open=True,
-                                    color="danger",
-                                ),
-                                dbc.Row(
-                                    [
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Máquina:")]),
-                                                dbc.Select(
-                                                    id="modal-machine-select-delete",
-                                                    options=[],
-                                                    placeholder="Selecione uma máquina para deletar",
-                                                ),
-                                            ],
-                                            width=8,
-                                        ),
-                                    ]
-                                ),
-                                html.Br(),
-                                dbc.Button(
-                                    "Deletar",
-                                    color="warning",
-                                    id="modal-machine-delete-button",
-                                ),
-                            ],
-                            title="Deseja deletar uma máquina?",
-                        ),
-                    ],
-                    start_collapsed=True,
-                    id="modal-machine-delete-accordion",
                 ),
             ]
         ),

@@ -12,7 +12,7 @@ from app import app
 layout = dbc.Modal(
     [
         dbc.ModalHeader(
-            dbc.ModalTitle([html.Strong("Cadastrar/Excluir tempo por operação")])
+            dbc.ModalTitle([html.Strong("Cadastrar novo tempo por operação")])
         ),
         dbc.ModalBody(
             [
@@ -27,7 +27,6 @@ layout = dbc.Modal(
                                     placeholder="Selecione um setor",
                                 ),
                             ],
-                           
                         ),
                     ]
                 ),
@@ -42,7 +41,6 @@ layout = dbc.Modal(
                                     options=[],
                                 ),
                             ],
-                           
                         ),
                     ]
                 ),
@@ -57,7 +55,6 @@ layout = dbc.Modal(
                                     options=[],
                                 ),
                             ],
-                           
                         ),
                     ]
                 ),
@@ -73,7 +70,6 @@ layout = dbc.Modal(
                                     maxLength=6,
                                 ),
                             ],
-                            
                         ),
                     ]
                 ),
@@ -89,7 +85,6 @@ layout = dbc.Modal(
                                     minLength=8,
                                 ),
                             ],
-                            
                         ),
                     ]
                 ),
@@ -122,87 +117,12 @@ layout = dbc.Modal(
                         ),
                     ]
                 ),
-                dbc.Accordion(
-                    [
-                        dbc.AccordionItem(
-                            [
-                                dbc.Alert(
-                                    "Deletar pode afetar o funcionamento da aplicação!",
-                                    dismissable=True,
-                                    is_open=True,
-                                    color="danger",
-                                ),
-                                dbc.Row(
-                                    [
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Item:")]),
-                                                dbc.Select(
-                                                    id="modal-time-select-item-delete-time",
-                                                    options=[],
-                                                    placeholder="Selecione um item",
-                                                ),
-                                            ],
-                                            width=3,
-                                        ),
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Máquina:")]),
-                                                dbc.Select(
-                                                    id="modal-time-select-machine-delete-time",
-                                                    placeholder="Selecione",
-                                                    options=[],
-                                                ),
-                                            ],
-                                            width=3,
-                                        ),
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Operação:")]),
-                                                dbc.Select(
-                                                    id="modal-time-select-operation-delete-time",
-                                                    options=[],
-                                                    placeholder="Selecione",
-                                                ),
-                                            ],
-                                            width=3,
-                                        ),
-                                        dbc.Col(
-                                            [
-                                                dbc.Label([html.Strong("Tempo:")]),
-                                                dbc.Select(
-                                                    id="modal-time-select-delete-time",
-                                                    options=[],
-                                                    placeholder="Selecione",
-                                                ),
-                                            ],
-                                            width=3,
-                                        ),
-                                    ]
-                                ),
-                                html.P(
-                                    id="modal-time-error-message-delete",
-                                    style={"display": "none", "color": "red"},
-                                ),
-                                html.Br(),
-                                dbc.Button(
-                                    "Deletar",
-                                    color="warning",
-                                    id="modal-time-delete-button",
-                                ),
-                            ],
-                            title="Deseja deletar um tempo?",
-                        ),
-                    ],
-                    start_collapsed=True,
-                ),
             ]
         ),
     ],
     id="modal-time",
     backdrop="static",
     scrollable=True,
-    size="lg",
 )
 
 
